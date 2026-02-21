@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iron Horse FC — Kitchener–Waterloo</title>
+  <meta name="description" content="Community-owned, cooperatively governed football club rooted in Kitchener–Waterloo.">
+  <meta property="og:title" content="Iron Horse FC">
+  <meta property="og:description" content="Community-owned, cooperatively governed football club rooted in Kitchener–Waterloo.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --red: #C62828;
+      --green: #1B5E20;
+      --cream: #E3DCCA;
+      --black: #111;
+      --light-red: #E53935;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      min-height: 100vh;
+      background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+
+    .serif {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.7;
+      font-size: 16.5px;
+      color: #2a2a2a;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background: var(--black);
+      color: var(--cream);
+      padding: 9px 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+      flex-wrap: wrap;
+    }
+
+    .hero svg.badge { flex-shrink: 0; }
+    .hero-text { flex: 1; min-width: 250px; }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      line-height: 1;
+      font-size: clamp(4rem, 11vw, 7rem);
+      color: var(--black);
+      letter-spacing: 2px;
+    }
+
+    .fc-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      line-height: 1;
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      color: var(--green);
+      letter-spacing: 6px;
+      margin-top: 2px;
+    }
+
+    .subtitle {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-style: italic;
+      color: #999;
+      margin: 1rem 0 0;
+      font-size: 15px;
+    }
+
+    /* Divider */
+    .divider { max-width: 840px; margin: 0 auto; padding: 0 2rem; }
+    .divider-inner { height: 3px; display: flex; }
+    .divider-green { flex: 3; background: var(--green); }
+    .divider-red { flex: 1; background: var(--red); }
+
+    /* About */
+    .about { max-width: 840px; margin: 0 auto; padding: 1.5rem 2rem 2.5rem; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .about p { margin-bottom: 1rem; }
+    .about p:last-child { margin-bottom: 0; }
+
+    /* Quote Band */
+    .quote-band { background: var(--green); padding: 2.25rem 2rem; }
+
+    .quote-band-inner {
+      max-width: 840px;
+      margin: 0 auto;
+      display: flex;
+      gap: 18px;
+    }
+
+    .quote-band-inner svg { flex-shrink: 0; margin-top: 4px; }
+
+    .quote-band p {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.2rem, 3.2vw, 1.65rem);
+      color: var(--cream);
+      line-height: 1.35;
+      letter-spacing: 0.5px;
+    }
+
+    /* Section Label */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-label span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+
+    .section-label.light span { color: rgba(227,220,202,0.5); }
+
+    /* Principles */
+    .principles { max-width: 840px; margin: 0 auto; padding: 3rem 2rem; }
+
+    .principle {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .principle:last-child { border-bottom: none; }
+
+    .principle-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      color: var(--red);
+      padding-top: 1px;
+    }
+
+    .principle-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 19px;
+      letter-spacing: 1px;
+      color: var(--black);
+    }
+
+    .principle-text {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 15px;
+      color: #555;
+      margin-left: 0.6rem;
+      line-height: 1.7;
+    }
+
+    /* Get Involved */
+    .get-involved {
+      background: var(--black);
+      color: var(--cream);
+      padding: 2rem;
+      border-top: 3px solid var(--red);
+    }
+
+    .get-involved-inner {
+      max-width: 840px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--cream);
+      padding: 12px 0;
+      border-bottom: 2px solid var(--red);
+    }
+
+    .email-link span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--black);
+      padding: 1.25rem 2rem;
+      border-top: 1px solid rgba(227,220,202,0.08);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: var(--green);
+    }
+
+    .footer-info {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: rgba(227,220,202,0.35);
+    }
+
+    .footer-bar { height: 0.5rem; background: var(--black); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <span>Est. 2026</span>
+    <svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 6.18,3.53 10,3.82 7.04,6.28 7.94,10 5,7.92 2.06,10 2.96,6.28 0,3.82 3.82,3.53" fill="#C62828"/></svg>
+    <span>Kitchener–Waterloo</span>
+    <svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 6.18,3.53 10,3.82 7.04,6.28 7.94,10 5,7.92 2.06,10 2.96,6.28 0,3.82 3.82,3.53" fill="#C62828"/></svg>
+    <span>Haldimand Tract</span>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <svg class="badge" width="130" height="130" viewBox="0 0 130 130">
+      <circle cx="65" cy="65" r="63" fill="none" stroke="#1B5E20" stroke-width="3"/>
+      <circle cx="65" cy="65" r="58" fill="#1B5E20"/>
+      <circle cx="65" cy="65" r="52" fill="none" stroke="#C62828" stroke-width="1.5" opacity="0.5"/>
+      <defs>
+        <path id="topArc" d="M 22,65 a 43,43 0 0,1 86,0" fill="none"/>
+        <path id="bottomArc" d="M 22,65 a 43,43 0 0,0 86,0" fill="none"/>
+      </defs>
+      <text fill="#E3DCCA" opacity="0.7" font-size="7.5" letter-spacing="3" font-family="'Barlow Condensed', sans-serif" font-weight="600">
+        <textPath href="#topArc" startOffset="50%" text-anchor="middle">IRON HORSE</textPath>
+      </text>
+      <text fill="#E3DCCA" opacity="0.5" font-size="6" letter-spacing="2" font-family="'Barlow Condensed', sans-serif" font-weight="600">
+        <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">KITCHENER–WATERLOO</textPath>
+      </text>
+      <text x="65" y="68" text-anchor="middle" font-family="'Bebas Neue', sans-serif" font-size="40" fill="#E3DCCA" letter-spacing="2">IH</text>
+      <text x="65" y="82" text-anchor="middle" font-family="'Barlow Condensed', sans-serif" font-size="10" fill="#E3DCCA" opacity="0.6" letter-spacing="3" font-weight="600">FC</text>
+      <g transform="translate(59, 35)">
+        <polygon points="6,0 7.4,4.2 12,4.7 8.5,7.7 9.4,12 6,9.7 2.6,12 3.5,7.7 0,4.7 4.6,4.2" fill="#C62828"/>
+      </g>
+      <text x="65" y="95" text-anchor="middle" font-family="'Barlow Condensed', sans-serif" font-size="7" fill="#E3DCCA" opacity="0.35" letter-spacing="2" font-weight="400">2026</text>
+    </svg>
+
+    <div class="hero-text">
+      <h1>Iron Horse</h1>
+      <div class="fc-label">Football Club</div>
+      <p class="subtitle">Community-owned · Cooperatively governed</p>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="divider">
+    <div class="divider-inner">
+      <div class="divider-green"></div>
+      <div class="divider-red"></div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div class="about">
+    <div class="about-grid">
+      <div>
+        <p class="serif">Iron Horse Football Club is a community-owned, cooperatively governed football club rooted in Kitchener–Waterloo.</p>
+        <p class="serif">We play on the Haldimand Tract — land granted to the Six Nations of the Grand River in 1784 and systematically diminished ever since. That history shapes how we operate.</p>
+      </div>
+      <div>
+        <p class="serif">This region is growing fast and unevenly. People arrive from everywhere and try to build a life in a place where housing is scarce and wages are precarious. Kids need somewhere to go. Families need a reason to feel like this city is theirs.</p>
+        <p class="serif">Iron Horse FC exists for them.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quote Band -->
+  <div class="quote-band">
+    <div class="quote-band-inner">
+      <svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,0 9.89,5.65 16,6.14 11.26,10.04 12.7,16 8,12.67 3.3,16 4.74,10.04 0,6.14 6.11,5.65" fill="rgba(227,220,202,0.3)"/></svg>
+      <p>Named for the Iron Horse Trail — a decommissioned rail corridor transformed into shared public space. Like that trail, we take a model built on exclusion and profit and remake it as something accessible, democratic, and ours.</p>
+    </div>
+  </div>
+
+  <!-- Principles -->
+  <div class="principles">
+    <div class="section-label">
+      <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="7,0 8.66,4.95 14,5.37 9.83,8.84 11.09,14 7,11.07 2.91,14 4.17,8.84 0,5.37 5.34,4.95" fill="#C62828"/></svg>
+      <span>Founding Principles</span>
+    </div>
+
+    <div class="principle">
+      <span class="principle-num">I</span>
+      <div><span class="principle-title">Accessibility over accumulation</span><span class="principle-text">Sliding-scale fees, equipment sharing, and free programming. No one is excluded because they can't pay.</span></div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">II</span>
+      <div><span class="principle-title">Democratic self-governance</span><span class="principle-text">One member, one vote. An elected board. Decisions about the club are made by the people in it.</span></div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">III</span>
+      <div><span class="principle-title">Newcomer &amp; refugee inclusion</span><span class="principle-text">Programming, communication, and culture built around the families remaking this region as home.</span></div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">IV</span>
+      <div><span class="principle-title">Indigenous solidarity</span><span class="principle-text">Reciprocal relationships with Six Nations and Indigenous communities, guided by their priorities.</span></div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">V</span>
+      <div><span class="principle-title">Housing justice &amp; class politics</span><span class="principle-text">The cost of living determines who can participate in community life. That's a club concern, not just a political one.</span></div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">VI</span>
+      <div><span class="principle-title">Environmental responsibility</span><span class="principle-text">Stewardship of the Grand River watershed in our operations, programming, and advocacy.</span></div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">VII</span>
+      <div><span class="principle-title">Art &amp; culture</span><span class="principle-text">Creative expression is part of club life — not an add-on. Match days are community gatherings.</span></div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">VIII</span>
+      <div><span class="principle-title">Mutual aid</span><span class="principle-text">Everyone has something to give and something to receive. The club looks after its own.</span></div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">IX</span>
+      <div><span class="principle-title">Anti-racism &amp; anti-oppression</span><span class="principle-text">Active commitment against discrimination of any kind. Education, intervention, accountability.</span></div>
+    </div>
+  </div>
+
+  <!-- Get Involved -->
+  <div class="get-involved">
+    <div class="get-involved-inner">
+      <div class="section-label light">
+        <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="7,0 8.66,4.95 14,5.37 9.83,8.84 11.09,14 7,11.07 2.91,14 4.17,8.84 0,5.37 5.34,4.95" fill="rgba(227,220,202,0.35)"/></svg>
+        <span>Get Involved</span>
+      </div>
+      <a href="mailto:contact@ironhorsefc.ca" class="email-link">
+        <svg width="12" height="12" viewBox="0 0 12 12"><polygon points="6,0 7.42,4.23 12,4.59 8.4,7.55 9.49,12 6,9.48 2.51,12 3.6,7.55 0,4.59 4.58,4.23" fill="#E53935"/></svg>
+        <span>contact@ironhorsefc.ca</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-name">Iron Horse FC</span>
+    <svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 6.18,3.53 10,3.82 7.04,6.28 7.94,10 5,7.92 2.06,10 2.96,6.28 0,3.82 3.82,3.53" fill="#C62828"/></svg>
+    <span class="footer-info">Kitchener–Waterloo · 2026</span>
+  </div>
+  <div class="footer-bar"></div>
+
+
+</body>
+</html>
